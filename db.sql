@@ -7,6 +7,7 @@ CREATE TABLE `author` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `profile` varchar(200) DEFAULT NULL,
+  `password` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
 );
   
@@ -14,9 +15,9 @@ CREATE TABLE `author` (
 -- Dumping data for table `author`
 --
   
-INSERT INTO `author` VALUES (1,'egoing','developer');
-INSERT INTO `author` VALUES (2,'duru','database administrator');
-INSERT INTO `author` VALUES (3,'taeho','data scientist, developer');
+INSERT INTO `author` VALUES (1,'egoing','developer', '111111');
+INSERT INTO `author` VALUES (2,'duru','database administrator', '111111');
+INSERT INTO `author` VALUES (3,'taeho','data scientist, developer', '111111');
   
 --
 -- Table structure for table `topic`
