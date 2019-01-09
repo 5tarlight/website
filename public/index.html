@@ -1,10 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Starlight</title>
-</head>
-<body>
-  <img src='./images/profile.png'>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <style>
+      * {
+      padding: 0px;
+      margin: 0px;
+      }
+
+      .menu {
+      margin: 7px;
+      }
+
+      header {
+      background-color: #111166;
+      }
+
+      .menulink {
+      text-decoration: none;
+      color: white;
+      }
+
+      .title{
+        font-family: 'Staatliches', cursive;
+        padding-left: 10px;
+      }
+
+      .about {
+        font-family: 'Noto Sans KR', sans-serif;
+        padding-left: 10px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Staatliches&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+    <script>
+      $(document).ready(function () {
+        $('.slider').bxSlider();
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <table>
+        <tr>
+          <td>
+            <div class='menu'>
+              <a href='/' class='menulink'><b>HOME</b></a>
+            </div>
+          </td>
+          <td>
+            <div class='menu'>
+              <a href='/login.html' class='menulink'><b>Sign In</b></a>
+            </div>
+          </td>
+          <td>
+            <div class='menu'>
+              <a href='/register.html' class='menulink'><b>Sign Up</b></a>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </header>
+    <div class="slider">
+      <div><img src='./images/test.png'></div>
+      <div><img src='./images/test2.png'></div>
+      <div><img src='./images/test3.png'></div>
+    </div>
+
+      <h1 class='title'>Starlight</h1>
+      <div class='about'>
+        학생 개발자 Starlight입니다!
+      </div>
+  </body>
 </html>

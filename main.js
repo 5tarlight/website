@@ -31,10 +31,11 @@ app.set('port', process.env.PORT || 80)
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use('/', serveStatic(path.join(__dirname, 'public')))
+app.use('/.well-known', serveStatic(path.join(__dirname, '.well-known')))
 app.use(cors())
 app.use(cookieParser())
 app.use(expressSession({
-  secret: 'my key',
+  secret: 'secret',
   resave: true,
   saveUninitialized: true
 }))
@@ -99,12 +100,9 @@ router.route('/process/login').post(async (req, res) => {
         res.writeHead('200', { 'Content-Type': 'text/html;charset=utf-8' })
         res.write('<h1>Success!</h1>')
         res.end('<h2>환영합니다 ' + paramname + '님</h2>')
-        req.session.use = {
-          name: paramname,
-          password: parampassword,
-          profile: results[0]['profile'],
-          authorized: true
-        }
+        req.session.username = paramname
+        req.session.password = parampassword
+        req.session.profile = results[0]['profile']
       } else {
         res.writeHead('200', { 'Content-Type': 'text/html;charset=utf-8' })
         res.write('Error')
@@ -117,6 +115,16 @@ router.route('/process/login').post(async (req, res) => {
 router.route('/session/list').get(async (req, res) => {
   res.writeHead('200')
   res.end(JSON.stringify(req.session))
+})
+
+router.route('/new').get(async (req, res) => {
+  if (!(req.session.username && req.session.password && req.session.profile)) {
+    console.log(req.ip + '로그인되지 않음')
+    res.redirect('/login.html')
+  } else {
+    console.log(req.ip + '글작성 페이지 이동')
+    res.redirect('/new.html')
+  }
 })
 
 app.use(router)
